@@ -10,6 +10,7 @@ public class GamePanel extends JPanel implements Runnable
     public static final int PIXEL_SIZE = 10;
     public static final int BOARD_WIDTH = 50;
     public static final int BOARD_HEIGHT = 50;
+    private final JLabel scoreLabel;
     private final JButton respawnButton;
     private Thread gameThread;
 
@@ -25,10 +26,16 @@ public class GamePanel extends JPanel implements Runnable
         snake = new Snake();
         apple = new Apple();
 
+        scoreLabel = new JLabel("dun",JLabel.CENTER);
+        scoreLabel.setForeground(Color.lightGray);
+        scoreLabel.setBounds(BOARD_WIDTH*PIXEL_SIZE/2-50, BOARD_HEIGHT*PIXEL_SIZE/2-75, 100, 50);
+        scoreLabel.setVisible(false);
         respawnButton = new JButton("restart");
         respawnButton.addActionListener(e -> restartGame());
         respawnButton.setBounds(BOARD_WIDTH*PIXEL_SIZE/2-50, BOARD_HEIGHT*PIXEL_SIZE/2-25, 100, 50);
         respawnButton.setVisible(false);
+
+        this.add(scoreLabel);
         this.add(respawnButton);
         this.setFocusable(true);
         this.setPreferredSize(new Dimension(BOARD_WIDTH*PIXEL_SIZE, BOARD_HEIGHT*PIXEL_SIZE));
@@ -103,7 +110,9 @@ public class GamePanel extends JPanel implements Runnable
 
     private void endGame()
     {
+        scoreLabel.setText("Score: " + snake.getSnakeCells().size());
         gameIsRunning = false;
+        scoreLabel.setVisible(true);
         respawnButton.setVisible(true);
     }
 
@@ -112,6 +121,7 @@ public class GamePanel extends JPanel implements Runnable
         snake.reset();
         apple.respawn(snake.getSnakeCells());
         gameIsRunning = true;
+        scoreLabel.setVisible(false);
         respawnButton.setVisible(false);
         gameThread = new Thread(this);
         gameThread.start();
