@@ -125,13 +125,13 @@ public class GamePanel extends JPanel implements Runnable
         @Override
         public void keyPressed(KeyEvent e) {
             if(e.getKeyCode()==87) // W
-                snake.setDirection(0, -1);
+                snake.addDirection(0, -1);
             if(e.getKeyCode()==65) // A
-                snake.setDirection(-1, 0);
+                snake.addDirection(-1, 0);
             if(e.getKeyCode()==83) // S
-                snake.setDirection(0, 1);
+                snake.addDirection(0, 1);
             if(e.getKeyCode()==68) // D
-                snake.setDirection(1, 0);
+                snake.addDirection(1, 0);
         }
     }
 

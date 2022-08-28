@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Apple extends Rectangle
+public class Apple
 {
     private final ArrayList<int[]> boardCellsPositions = new ArrayList<>();
     private int[] pos;

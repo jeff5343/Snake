@@ -4,11 +4,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Snake extends Rectangle
+public class Snake
 {
+    private static final int INITIAL_LENGTH = 3;
     private ArrayList<int[]> snakeCells;
     private ArrayList<int[]> inputs;
-    private final int initialLength = 3;
     private int xDir;
     private int yDir;
     private boolean ateApple;
@@ -47,7 +47,7 @@ public class Snake extends Rectangle
         }
     }
 
-    public void setDirection(int xDir, int yDir)
+    public void addDirection(int xDir, int yDir)
     {
         inputs.add(new int[]{xDir, yDir});
     }
@@ -83,8 +83,8 @@ public class Snake extends Rectangle
     {
         snakeCells = new ArrayList<>();
         inputs = new ArrayList<>();
-        for(int i=0; i<initialLength; i++)
-            snakeCells.add(new int[]{(GamePanel.BOARD_WIDTH/2-1)+i, GamePanel.BOARD_HEIGHT/2-1});
+        for(int i=0; i<INITIAL_LENGTH; i++)
+            snakeCells.add(new int[]{(GamePanel.BOARD_WIDTH/2-1)-i, GamePanel.BOARD_HEIGHT/2-1});
 
         xDir=1;
         yDir=0;
