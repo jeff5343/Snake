@@ -11,7 +11,7 @@ public class Apple
 
     public Apple()
     {
-        reset();
+        pos = new int[]{GamePanel.BOARD_WIDTH/2 ,GamePanel.BOARD_HEIGHT/2+10};
         for(int i=0; i<GamePanel.BOARD_WIDTH; i++)
         {
             for(int j=0; j<GamePanel.BOARD_HEIGHT; j++)
@@ -36,11 +36,6 @@ public class Apple
         for(int[] snakeCellPos : snakeCellsPositions)
             emptyCellsPositions.removeIf(pos -> Arrays.equals(pos, snakeCellPos));
         pos = emptyCellsPositions.get((int) (Math.random() * emptyCellsPositions.size()));
-    }
-
-    public void reset()
-    {
-        pos = new int[]{GamePanel.BOARD_WIDTH/2 ,GamePanel.BOARD_HEIGHT/2+10};
     }
 
     public int[] getPos()

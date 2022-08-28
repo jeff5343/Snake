@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GameFrame extends JFrame
 {
-    private GamePanel panel;
+    private final GamePanel panel;
 
     public GameFrame()
     {

@@ -12,8 +12,6 @@ public class GamePanel extends JPanel implements Runnable
     public static final int BOARD_HEIGHT = 50;
     private final JButton respawnButton;
     private Thread gameThread;
-    private Image image;
-    private Graphics graphics;
 
     private final Snake snake;
     private final Apple apple;
@@ -70,9 +68,8 @@ public class GamePanel extends JPanel implements Runnable
     {
         super.paintComponent(g);
 
-        image = createImage(this.getWidth(), this.getHeight());
-        graphics = image.getGraphics();
-        draw(graphics);
+        Image image = createImage(this.getWidth(), this.getHeight());
+        draw(image.getGraphics());
         g.drawImage(image, 0, 0, this);
     }
 
@@ -113,7 +110,7 @@ public class GamePanel extends JPanel implements Runnable
     private void restartGame()
     {
         snake.reset();
-        apple.reset();
+        apple.respawn(snake.getSnakeCells());
         gameIsRunning = true;
         respawnButton.setVisible(false);
         gameThread = new Thread(this);
