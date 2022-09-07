@@ -11,10 +11,10 @@ public class Apple
 
     public Apple()
     {
-        pos = new int[]{GamePanel.BOARD_WIDTH/2 ,GamePanel.BOARD_HEIGHT/2+10};
-        for(int i=0; i<GamePanel.BOARD_WIDTH; i++)
+        pos = new int[]{GamePanel.BOARD_WIDTH/2, GamePanel.BOARD_HEIGHT/2+10};
+        for(int i=0; i<GamePanel.BOARD_WIDTH-1; i++)
         {
-            for(int j=0; j<GamePanel.BOARD_HEIGHT; j++)
+            for(int j=0; j<GamePanel.BOARD_HEIGHT-1; j++)
                 boardCellsPositions.add(new int[]{i, j});
         }
     }
